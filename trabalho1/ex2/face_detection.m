@@ -32,7 +32,7 @@ function face_detection(filename)
         detetor = vision.CascadeObjectDetector;
 
         % Retorna os valores da caixa de limite com base no número de objetos
-        caixa = step(detetor, I);
+        caixa = step(detetor, I)
     %
     
     % apresentar imagem
