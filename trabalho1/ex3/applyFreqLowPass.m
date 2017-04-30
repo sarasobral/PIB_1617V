@@ -1,3 +1,16 @@
+%
+% ISEL - Instituto Superior de Engenharia de Lisboa.
+%
+% LEIC - Licenciatura em Engenharia Informatica e de Computadores.
+% MEIC - Mestrado em Engenharia Informatica e de Computadores.
+%
+% PIB - Processamento de Imagem e Biometria.
+%
+% fingerprint_enhancement.m
+% Transformação T aplicada através de tabela de lookup.
+
+% Esta aplica um filtro em frequencia passa baixo.
+
 function If = applyFreqLowPass(ext, folder, imageName, image2comapreName, r)
     
     if nargin==0
