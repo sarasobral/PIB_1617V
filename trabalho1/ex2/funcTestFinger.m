@@ -1,3 +1,13 @@
+%
+% ISEL - Instituto Superior de Engenharia de Lisboa.
+%
+% LEIC - Licenciatura em Engenharia Informatica e de Computadores.
+% MEIC - Mestrado em Engenharia Informatica e de Computadores.
+%
+% PIB - Processamento de Imagem e Biometria.
+%
+% Para testar todas as imagens da pasta FingerprintImages
+
 function funcTestFinger()
     fingerprint_enhancement('FingerprintImages\finger1.tif');
     fingerprint_enhancement('FingerprintImages\finger2.tif');
