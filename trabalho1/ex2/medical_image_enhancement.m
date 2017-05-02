@@ -19,22 +19,27 @@ function medical_image_enhancement(filename)
           filename =  'MedicalImages\XRay1.tif';
           
     end
-      
+    
     info = imfinfo(filename);
     I = imread(filename);
-
+    
 	if (strcmp(info.ColorType, 'truecolor')) 
         I = rgb2gray(I);
     end
-	
+    
+	J = imadjust(I);
     if strcmp(filename,'MedicalImages\PET1.tif')
         J = imadjust(I,[0.8 1],[0 1]);%tumores
         K = imadjust(I,[0 1],[0.06 0.9]);%improved body
         J = K+J;
-    else
-        J = imadjust(I);
     end
-
+    if strcmp(filename,'MedicalImages\XRay1.tif') 
+        addpath('..\ex1\');
+        J = generic_intensity_transform('MedicalImages\XRay1.tif');
+        K = imadjust(I);
+        J = J-K;
+    end    
+    
     figure();
     subplot(121); imshow(I); colorbar; title(' Imagem ' );
     subplot(122); imshow(J); colorbar; title(' Imagem transformada ' );
