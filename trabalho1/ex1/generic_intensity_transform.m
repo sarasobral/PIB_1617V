@@ -9,7 +9,7 @@
 % generic_intensity_transform.m
 % Transformação T aplicada através de tabela de lookup.
 
-function generic_intensity_transform(filename)
+function It = generic_intensity_transform(filename)
     
     if nargin==0
          filename = 'GenericImages\lena.gif'; %      'GenericImages\peppers.png';
@@ -18,7 +18,7 @@ function generic_intensity_transform(filename)
     end
 
     % Fechar todas as janelas de figuras.
-    close all;
+    %close all;
 
     % Limpar a consola.
     clc;

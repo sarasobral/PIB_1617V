@@ -22,7 +22,7 @@ function [I, rp, R, G, B] = image_details(filename)
     end
 
     % Fechar todas as janelas de figuras.
-    close all;
+    %close all;
 
     % Limpar a consola.
     clc;
