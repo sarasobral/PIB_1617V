@@ -9,11 +9,11 @@
 % fingerprint_enhancement.m
 % Transformação T aplicada através de tabela de lookup.
 
-% Esta aplica um filtro Gaussinano e de seguinda um filtro Laplaciano.
+% Aplica o operador Laplaciano.
 
-function If = applyLoG(I, Ioriginal)
+function If = applyLoG(I, Io)
     H = fspecial('log');
     If = imfilter(I,H);
-    If = Ioriginal - If;
+    If = Io - If;
     
 end

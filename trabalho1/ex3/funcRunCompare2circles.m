@@ -7,14 +7,14 @@
 % PIB - Processamento de Imagem e Biometria.
 %
 % fingerprint_enhancement.m
-% Transformação T aplicada através de tabela de lookup.
+% Transforma��o T aplicada através de tabela de lookup.
 
-% Esta função
-% chama a função que aplica um filtro passa baixo
+% Remover o ruido da imagem com um filtro em frequencia passa baixo
+% se necess�rio aplicar um laplaciano
 % guardando a imagem reparada
-% e por fim compara-a com a imagem original.
+% compar�-la com a imagem original.
 
-function funcRunCompare2faces()
+function funcRunCompare2circles()
 
     % Fechar todas as janelas de figuras.
     close all;
@@ -25,30 +25,35 @@ function funcRunCompare2faces()
     ext = '.bmp';
     folder = 'NoisyAndDistortedImages\';
     imageName = 'circles';
-    image = (strcat(folder,imageName, ext));
+    image = strcat(folder, imageName, ext);
     I = imread(image);
+    
     image2comapreName = 'circles_1';
-    If = applyLowPass (ext, folder, imageName, image2comapreName, 100);
+    image2comapre = strcat(folder, image2comapreName, ext);
+    If = applyFreqLowPass (image, image2comapre, 100);
     callCompare (If, image, folder, image2comapreName, ext);
-    image2comapreName = 'circles_2';
-    If = applyLowPass (ext, folder, imageName, image2comapreName, 60);
+    
+    image2comapreName = 'circles_2';    
+    image2comapre = strcat(folder, image2comapreName, ext);
+    If = applyFreqLowPass (image, image2comapre, 60);
+    If = applyLaplacian(If, I);  
     callCompare (If, image, folder, image2comapreName, ext);
+    
     image2comapreName = 'circles_3';
-    If = applyLowPass (ext, folder, imageName, image2comapreName, 10);
-    If = applyLaplacian(If, I);
+    image2comapre = strcat(folder, image2comapreName, ext);
+    If = applyFreqLowPass (image, image2comapre, 10);
+    If = applyLaplacian(If, I);  
     callCompare (If, image, folder, image2comapreName, ext);
+    
     image2comapreName = 'circles_4';
-    If = applyLowPass (ext, folder, imageName, image2comapreName, 10);
-    If = applyLaplacian(If, I);
+    image2comapre = strcat(folder, image2comapreName, ext);
+    If = applyFreqLowPass (image, image2comapre, 10);
+    If = applyLaplacian(If, I);  
     callCompare (If, image, folder, image2comapreName, ext);
+    
     image2comapreName = 'circles_5';
-    If = applyLowPass (ext, folder, imageName, image2comapreName, 10);
-    If = applyLaplacian(If, I);
+    image2comapre = strcat(folder, image2comapreName, ext);
+    If = applyFreqLowPass (image, image2comapre, 10);
+    If = applyLaplacian(If, I);  
     callCompare (If, image, folder, image2comapreName, ext);
-end
-
-function callCompare (If, image, folder, image2comapreName, ext)
-    newImageName = strcat(folder, image2comapreName, 'new', ext);
-    imwrite(If, newImageName); 
-    compare2images(image, newImageName);   
 end

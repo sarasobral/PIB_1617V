@@ -11,25 +11,19 @@
 
 % Esta aplica um filtro em frequencia passa baixo.
 
-function If = applyFreqLowPass(ext, folder, imageName, image2comapreName, r)
+function If = applyFreqLowPass(image, image2comapre, r)
     
-    if nargin==0
-        ext = '.bmp';
-        folder = 'NoisyAndDistortedImages\';
-        imageName = 'circles';
-        image2comapreName = 'circles_1';
+    if nargin==0        
+        image = 'NoisyAndDistortedImages\circles.bmp';
+        image2comapre = 'NoisyAndDistortedImages\circles_1.bmp';
         r = 100;
     end 
-    image = strcat(folder, imageName, ext);
-    I = imread(image);
-    image2comapre = strcat(folder, image2comapreName, ext);
     
+    I = imread(image);    
     arrayImage2comapre = imread(image2comapre); 
-    %for r = 10 : 10 : 140
-        % Apply a low-pass filter with different radius
-        If = frequency_filtering_low_pass(arrayImage2comapre, r);
-        %pause(1);
-    %end
+    
+    If = frequency_filtering_low_pass(arrayImage2comapre, r);
+
 end
 
 
@@ -65,14 +59,6 @@ function If = frequency_filtering_low_pass(I, radius)
     % Remove residual imaginary parts and convert to unsigned integer.
     If = ifft2 ( ifftshift(G) ) ;
     If = uint8(real(If));
-
-
-    % Analysis of the main steps of the algorithm.
-    %figure(1); 
-    %subplot(221); imshow(Ip); title(' Padded image');
-    %subplot(222); imagesc(abs(Fp)); title(' Spectrum of the padded image');
-    %subplot(223); imshow(H); title(' Spectrum of H ');
-    %subplot(224); imshow(If); title(' Padded filtered image');
 
     If = uint8(If( 1:size(I,1), 1:size(I,2)));
     %figure(); 

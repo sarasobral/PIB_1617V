@@ -9,10 +9,9 @@
 % fingerprint_enhancement.m
 % Transformação T aplicada através de tabela de lookup.
 
-% Esta função
-% chama a função que remove o ruido de imagens
+% Remover o ruido da imagem com um filtro espacial n�o linear mediana
 % guardando a imagem reparada
-% e por fim compara-a com a imagem original.
+% compar�-la com a imagem original.
 
 function funcRunCompare2faces()
 
@@ -25,26 +24,30 @@ function funcRunCompare2faces()
     ext = '.bmp';
     folder = 'NoisyAndDistortedImages\';
     imageName = 'face1';
-    image = (strcat(folder,imageName, ext));
-    image2comapreName = 'face1_1';
-    If = removeNoiseSaltAndPepper (ext, folder, imageName, image2comapreName);
+    image = strcat(folder, imageName, ext);
+    
+    image2comapreName = 'face1_1';    
+    image2comapre = strcat(folder, image2comapreName, ext);    
+    If = applyRemoveSaltAndPepper (image, image2comapre);
     callCompare (If, image, folder, image2comapreName, ext);
+    
     image2comapreName = 'face1_2';
-    If = removeNoiseSaltAndPepper (ext, folder, imageName, image2comapreName);
+    image2comapre = strcat(folder, image2comapreName, ext);    
+    If = applyRemoveSaltAndPepper (image, image2comapre);
     callCompare (If, image, folder, image2comapreName, ext);
+    
     image2comapreName = 'face1_3';
-    If = removeNoiseSaltAndPepper (ext, folder, imageName, image2comapreName);
+    image2comapre = strcat(folder, image2comapreName, ext);    
+    If = applyRemoveSaltAndPepper (image, image2comapre);
     callCompare (If, image, folder, image2comapreName, ext);
+    
     image2comapreName = 'face1_4';
-    If = removeNoiseSaltAndPepper (ext, folder, imageName, image2comapreName);
+    image2comapre = strcat(folder, image2comapreName, ext);    
+    If = applyRemoveSaltAndPepper (image, image2comapre);
     callCompare (If, image, folder, image2comapreName, ext);
+    
     image2comapreName = 'face1_5';
-    If = removeNoiseSaltAndPepper (ext, folder, imageName, image2comapreName);
+    image2comapre = strcat(folder, image2comapreName, ext);    
+    If = applyRemoveSaltAndPepper (image, image2comapre);
     callCompare (If, image, folder, image2comapreName, ext);
-end
-
-function callCompare (If, image, folder, image2comapreName, ext)
-    newImageName = strcat(folder, image2comapreName, 'median', ext);
-    imwrite(If, newImageName); 
-    compare2images(image, newImageName);   
 end
