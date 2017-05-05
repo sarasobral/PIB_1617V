@@ -18,14 +18,13 @@ function If = applySpatialHighFilter(filename, originalFileName)
 	I = imread(filename);
     Io = imread(originalFileName);
     % Deteção de contornos por diferentes métodos.
-
-    H = fspecial('prewitt');
+    H = fspecial('laplacian');
     I2 = imfilter(I,H);    
-    If = Io - I2;
-    figure(); set(gcf,'Name', 'Filter');
-    subplot(121); imagesc(I); title(' Image ' ); colormap('gray');
-    subplot(122); imagesc(If); axis tight; title(' Image 6' ); %colorbar;
-    impixelinfo;         
+    If = Io + I2;
+%     figure(); set(gcf,'Name', 'Filter');
+%     subplot(121); imagesc(I); title(' Image ' ); colormap('gray');
+%     subplot(122); imagesc(If); axis tight; title(' Image 6' ); %colorbar;
+%     impixelinfo;         
 
 end
 

@@ -10,6 +10,6 @@
 
 function callCompare (If, image, folder, image2comapreName, ext)
     newImageName = strcat(folder, image2comapreName, 'spacial', ext);
-    imwrite((If), newImageName); 
+    imwrite(uint8(If), newImageName); 
     compare2images(image, newImageName);   
 end

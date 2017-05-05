@@ -31,6 +31,7 @@ function funcRunCompare2circles()
     image2comapreName = 'circles_1';
     image2comapre = strcat(folder, image2comapreName, ext);
     If = applyFreqLowPass (image, image2comapre, 100);
+    If = applyLaplacian(If, I);  
     callCompare (If, image, folder, image2comapreName, ext);
     
     image2comapreName = 'circles_2';    

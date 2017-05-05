@@ -26,7 +26,9 @@ function funcRunCompare2squares()
 	
     image2comapreName = 'squares_1';
 	image2Compare = (strcat(folder,image2comapreName, ext));    
-	If = applySpatialHighFilter(image, image2Compare);
+	If = applySpatialHighFilter(image,image2Compare);
+    close all;
+
 	callCompare (If, image, folder, image2comapreName, ext);
     
 	image2comapreName = 'squares_2';

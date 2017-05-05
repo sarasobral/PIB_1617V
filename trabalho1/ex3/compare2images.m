@@ -61,7 +61,7 @@ function compare2images(originalFile, actualFile)
     disp(actualFile);
     disp(['dif brilho = ' num2str(difBrightness)]);
     disp(['dif contraste = ' num2str(difContrast)]);
-    disp(['dif entropia, = ' num2str(difEntropy)]);
+    disp(['dif entropia = ' num2str(difEntropy)]);
     disp(['dif MSE = ' num2str(MSE)]);
     disp(['dif MAE= ' num2str(MAE)]);
     disp(' ');

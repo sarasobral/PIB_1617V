@@ -33,25 +33,25 @@ function I = applySpatialLowFilter(filename, originalFileName)
 	k3 = (1/49) * ones(7,7);
 	I3 = filter2(k3, I);
     
-    diff1 = sum(sum(double(I1)-double(Io)));
-    diff2 = sum(sum(double(I2)-double(Io)));
-    diff3 = sum(sum(double(I3)-double(Io)));
+    diff1 = abs(sum(sum(double(I1)-double(Io))));
+    diff2 = abs(sum(sum(double(I2)-double(Io))));
+    diff3 = abs(sum(sum(double(I3)-double(Io))));
     
-	if(diff1>diff2 && diff1>diff3)
-        I=I1;
-    end
-    if(diff2>diff1 && diff2>diff3)
+    diff = [diff1 diff2 diff3];
+    mindiff = min(diff);
+    if(mindiff==diff1)
+        I=I1; 
+    elseif(mindiff==diff2)
         I=I2;
-    end
-    if(diff3>diff1 && diff3>diff1)
+    else
         I=I3;
     end
-    figure(); set(gcf,'Name', 'Filters');
-	subplot(141); imagesc(Io); title(' Image ' ); colormap('gray');
-	subplot(242); imagesc(I1); axis tight; title(' Image 1 (3x3)' );
-	subplot(243); imagesc(I2); axis tight; title(' Image 2 (5x5)' );
-	subplot(244); imagesc(I3); axis tight; title(' Image 3 (7x7)' );
-	impixelinfo;    
+%     figure(); set(gcf,'Name', 'Filters');
+% 	subplot(141); imagesc(Io); title(' Image ' ); colormap('gray');
+% 	subplot(242); imagesc(I1); axis tight; title(' Image 1 (3x3)' );
+% 	subplot(243); imagesc(I2); axis tight; title(' Image 2 (5x5)' );
+% 	subplot(244); imagesc(I3); axis tight; title(' Image 3 (7x7)' );
+% 	impixelinfo;    
     
 end
 
