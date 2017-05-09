@@ -27,18 +27,18 @@ function medical_image_enhancement(filename)
         I = rgb2gray(I);
     end
     
-	J = imadjust(I);
     if strcmp(filename,'MedicalImages\PET1.tif')
-        J = imadjust(I,[0.8 1],[0 1]);%tumores
-        K = imadjust(I,[0 1],[0.06 0.9]);%improved body
+        J = imadjust(I,[0.8 1],[0 1]); % tumores
+        K = imadjust(I,[0 1],[0.06 0.9]); % improved body
         J = K+J;
-    end
-    if strcmp(filename,'MedicalImages\XRay1.tif') 
+    elseif strcmp(filename,'MedicalImages\XRay1.tif') 
         addpath('..\ex1\');
-        J = generic_intensity_transform('MedicalImages\XRay1.tif');
+        J = generic_intensity_transform('MedicalImages\XRay1.tif'); % inversa
         K = imadjust(I);
         J = J-K;
-    end    
+    else
+    	J = imadjust(I);
+    end
     
     figure();
     subplot(121); imshow(I); colorbar; title(' Imagem ' );

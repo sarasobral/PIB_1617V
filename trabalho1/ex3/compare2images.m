@@ -44,17 +44,17 @@ function compare2images(originalFile, actualFile)
     N = info.Height;
             
     MSE = 0;
-    for c = 1:1:(M-1)
-        for r = 1:1:(N-1)
-            MSE = MSE + square(double(I1(c,r))-double(I2(c,r)));
+    for c = 1:1:(M)
+        for r = 1:1:(N)
+            MSE = MSE + square(double(I1(r,c))-double(I2(r,c)));
         end
     end    
     MSE = MSE/(M*N);
     
     MAE = 0;
-    for c = 1:1:(M-1)
-        for r = 1:1:(N-1)
-            MAE = MAE + abs(double(I1(c,r))-double(I2(c,r)));
+    for c = 1:1:(M)
+        for r = 1:1:(N)
+            MAE = MAE + abs(double(I1(r,c))-double(I2(r,c)));
         end
     end    
     MAE = MAE/(M*N);

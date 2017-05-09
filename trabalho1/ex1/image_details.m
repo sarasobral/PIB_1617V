@@ -42,7 +42,7 @@ function [I, rp, R, G, B] = image_details(filename)
     % imagem colorida
     if (strcmp(info.ColorType, 'truecolor')) 
         % Obter as componentes R, G, e B
-        R = I(:,:,1);
+        R = I(:,:,1)
         G = I(:,:,2);
         B = I(:,:,3);
         
@@ -104,9 +104,9 @@ function [I, rp, R, G, B] = image_details(filename)
         disp(['valores máximo de intensidade = ' num2str(vmaxB)]);
         disp(['medida de contraste = ' num2str(mcB)]);
         disp(['entropia da imagem = ' num2str(eiB)]);
-    end
-    % imagem monocromática ou binária
-    if (~strcmp(info.ColorType, 'truecolor')) 
+    else
+        % imagem monocromática ou binária
+            
         % valores mínimo, médio e máximo de intensidade
         % é necessário realizar a oprecao 2 vezes sobre a matriz poprque 
         % a primeira operação devolve um vetor, e o obetivo é obter a operação

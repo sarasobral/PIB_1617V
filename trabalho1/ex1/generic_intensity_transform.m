@@ -12,8 +12,8 @@
 function It = generic_intensity_transform(filename)
     
     if nargin==0
-         filename = 'GenericImages\lena.gif'; %      'GenericImages\peppers.png';
-         % 'GenericImages\circ_bw.tif'; % 
+              filename = 'GenericImages\peppers.png';
+         % 'GenericImages\circ_bw.tif'; % 'GenericImages\lena.gif'; % 
          %               
     end
 
@@ -35,16 +35,14 @@ function It = generic_intensity_transform(filename)
         figure;
         subplot(211); imshow(I);  title(' Imagem original '); impixelinfo;
         subplot(212); imshow(It); title(' Imagem transformada '); impixelinfo;
-    end
-    if(rp == 8) 
+    elseif(rp == 8) 
         LUT = bit:-1:0;
         It = intlut(uint8(I), uint8(LUT));
         % Mostrar as três versões da imagem.
         figure;
         subplot(211); imshow(I);  title(' Imagem original '); impixelinfo;
         subplot(212); imshow(It); title(' Imagem transformada '); impixelinfo;
-    end
-    if(rp == 24) 
+    elseif(rp == 24) 
         LUT = 255:-1:0;
         Rt = intlut(uint8(R), uint8(LUT));
         Gt = intlut(uint8(G), uint8(LUT));
@@ -55,8 +53,6 @@ function It = generic_intensity_transform(filename)
         subplot(234); imshow(Rt); title(' Componente Red transformada '); impixelinfo;
         subplot(235); imshow(Gt); title(' Componente Blue transformada '); impixelinfo;
         subplot(236); imshow(Bt); title(' Componente Green transformada '); impixelinfo;
-    end
-    
-    
+    end    
 
 end
