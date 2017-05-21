@@ -1,16 +1,4 @@
-function intensity_to_RGB_transform()
-    close all;
-     clc;
-%     coloring('BinaryAndGrayscaleImages\bird.gif');
-     coloring('BinaryAndGrayscaleImages\circles.bmp');
-%    coloring('BinaryAndGrayscaleImages\eight_bw2.gif');
-%     coloring('BinaryAndGrayscaleImages\squares.gif');
-%     coloring('BinaryAndGrayscaleImages\text.tif');
-%     coloring('BinaryAndGrayscaleImages\weather.tif');
-%     coloring('BinaryAndGrayscaleImages\weld.tif');
-%     coloring('BinaryAndGrayscaleImages\xray.tif');
-end
-function coloring(filename)
+function intensity_to_RGB_transform(filename)
 	if nargin==0
        filename = ('BinaryAndGrayscaleImages\bird.gif');
     end

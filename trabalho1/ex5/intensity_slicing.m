@@ -1,19 +1,4 @@
-function intensity_slicing()
-    close all;
-    clc;
-    coloring('BinaryAndGrayscaleImages\bird.gif');
-    coloring('BinaryAndGrayscaleImages\circles.bmp');
-    coloring('BinaryAndGrayscaleImages\eight_bw2.gif');
-    coloring('BinaryAndGrayscaleImages\squares.gif');
-    coloring('BinaryAndGrayscaleImages\text.tif');
-    coloring('BinaryAndGrayscaleImages\weather.tif');
-    coloring('BinaryAndGrayscaleImages\weld.tif');
-    coloring('BinaryAndGrayscaleImages\xray.tif');
-end
-
-function coloring (filename)
-    % ler a imagem monocromatica
-    I = imread(filename);
+function Iout = intensity_slicing (I)
     % obter a imagem monocromatica
     [M,N] = size(I); 
     % niveis de cinzento usados na imagem monocromatica
@@ -42,6 +27,7 @@ function coloring (filename)
     Iout = cat(3, redPlane, greenPlane, bluePlane);
     figure();
     imshow(Iout);
+
 end
 
 function color = getRGBcolor(grey_level)

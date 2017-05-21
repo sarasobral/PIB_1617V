@@ -10,7 +10,7 @@
 % realiza transformações de intensidade adequadas para melhorar a 
 % legibilidade das mesmas. 
 
-function medical_image_enhancement(filename)
+function J = medical_image_enhancement(filename)
     
     if nargin==0
         %  filename =  'MedicalImages\MR1.jpg';
@@ -31,17 +31,18 @@ function medical_image_enhancement(filename)
         J = imadjust(I,[0.8 1],[0 1]); % tumores
         K = imadjust(I,[0 1],[0.06 0.9]); % improved body
         J = K+J;
-    elseif strcmp(filename,'MedicalImages\XRay1.tif') 
-        addpath('..\ex1\');
-        J = generic_intensity_transform('MedicalImages\XRay1.tif'); % inversa
-        K = imadjust(I);
-        J = J-K;
+%     elseif strcmp(filename,'MedicalImages\XRay1.tif') 
+%         addpath(genpath('.\..\..\ex2'));
+%         J = generic_intensity_transform('MedicalImages\XRay1.tif'); % inversa
+%         K = imadjust(I);
+%         J = J-K;
     else
     	J = imadjust(I);
     end
     
     figure();
-    subplot(121); imshow(I); colorbar; title(' Imagem ' );
+    subplot(121); imshow(I); colorbar; title(' Imagem original' );
     subplot(122); imshow(J); colorbar; title(' Imagem transformada ' );
+    imwrite(uint8(J), strcat(filename, 'transf', '.bmp')); 
 
 end
