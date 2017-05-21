@@ -25,3 +25,4 @@ function coloring (filename)
     imshow(H);  % Does this image match the other one?
     title('IMAGE (MxNx3)');
 end  
+
