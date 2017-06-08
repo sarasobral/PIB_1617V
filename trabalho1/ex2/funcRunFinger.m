@@ -8,7 +8,7 @@
 %
 % Para testar todas as imagens da pasta FingerprintImages
 
-function funcTestFinger()
+function funcRunFinger()
     fingerprint_enhancement('FingerprintImages\finger1.tif');
     fingerprint_enhancement('FingerprintImages\finger2.tif');
     fingerprint_enhancement('FingerprintImages\finger3.tif');
