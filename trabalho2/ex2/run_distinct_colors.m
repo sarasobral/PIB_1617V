@@ -8,17 +8,19 @@
 %
 
 function run_distinct_colors()
-close all;
-clc;
+    close all;
+    clc;
+
+
     filename = 'codeCard1.png';
     safe=0;
-     distinct_colors = rgb2safeColo(safe, filename)
-     safe=1;
-     distinct_colors = rgb2safeColo(safe, filename)
+    distinct_safest_colors = rgb2safeColor(safe, filename, 'codeCard1_safest.png')
+    safe=1;
+    distinct_safe_colors = rgb2safeColor(safe, filename, 'codeCard1_safe.png')
     filename = 'codeCard2.png';
     safe=0;
-    distinct_colors = rgb2safeColo(safe, filename)
+    distinct_safest_colors = rgb2safeColor(safe, filename, 'codeCard2_safest.png')
     safe=1;
-    distinct_colors = rgb2safeColo(safe, filename)
+    distinct_safe_colors = rgb2safeColor(safe, filename, 'codeCard2_safe.png')
 
 end

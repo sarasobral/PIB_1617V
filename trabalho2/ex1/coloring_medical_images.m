@@ -17,18 +17,22 @@ end
 
 function coloring(filename, ext)
     addpath(genpath('./../../trabalho1/ex1'));
-    addpath(genpath('./../../trabalho1/ex2'));
-    addpath(genpath('./../../trabalho1/ex5'));
     if (strcmp(filename, 'MedicalImages\US1'))
         I = rgb2gray(imread(strcat(filename, ext)))
     else
         I = imread(strcat(filename, ext));
     end
-    Iout = intensity_slicing (I);
-    imwrite(uint8(Iout), strcat(filename, 'original', ext)); 
     
+    
+    Iout = intensity_slicing (I);    
 	If = medical_image_enhancement(strcat(filename, ext));    
-    Iout =intensity_slicing (If);
-    imwrite(uint8(Iout), strcat(filename, 'transf', ext)); 
+    Ifout = intensity_slicing (If);
+    
+     figure();
+     subplot(221); imshow(I); colorbar; title(' Imagem original' );
+     subplot(222); imshow(Iout); colorbar; title(' Imagem original colorida' );
+     subplot(223); imshow(If); colorbar; title(' Imagem transformada' );
+     subplot(224); imshow(Ifout); colorbar; title(' Imagem transformada colorida' );
+
 
 end
