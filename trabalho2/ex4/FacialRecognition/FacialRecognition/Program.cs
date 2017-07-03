@@ -10,27 +10,23 @@ using System.Net.Http;
 
 namespace FacialRecognition {
     class Program {
-        private static readonly String path = //"..\\..\\..\\FaceImages\\";
-        @"C:\Users\Utilizador\Documents\ISEL\PIB\PIB_1617V\trabalho2\ex4\FaceImages\";
+        private static readonly String path1 = "..\\..\\..\\FaceImages\\";
+        private static readonly String path2 = "..\\..\\..\\RealFaceImages\\";
         private static readonly String[] bd_images = { "face1.bmp", "face2.bmp", "face3.bmp", "face4.bmp", "face5.bmp" };
-        private static readonly String[] real_images = { "bebe.jpg", "eduardo.jpg", "george.jpg", "helena.jpg", "samuel.jpg", "sara.jpg", "selena.jpg" };
+        private static readonly String[] real_images = { "bebe.jpg", "george.jpg", "samuel.jpg", "sara.jpg" };
 
         static void Main(string[] args)
         {
-            String imageFilePath, queryString;
+            String option;
             do
             {
-                Console.Write("(a) Testar com uma base de dados especifica\n(b) Testar com imagens reais\n(c) Inserir um caminho à escolha\n(exit) to end\n");
-                imageFilePath = Console.ReadLine();
-                if (imageFilePath == "exit") break;
-
-                queryString = ChooseFeatures(); // Request parameters
-                if (imageFilePath == "a") MakeDetectRequestFor(bd_images, queryString);
-                else if (imageFilePath == "b") MakeDetectRequestFor(real_images, queryString);
-                else MakeDetectRequest(imageFilePath, Path.GetFileName(imageFilePath), queryString);
-            
-                Console.WriteLine("\n\n\nEspere pelos resultados ou vá à diretoria e consult os ficheiro .txt gerados...\n\n\n");
-                Console.ReadLine();
+                Console.Write("(a) Extrair caracteristicas\n"+
+                    "(b) Identificar uma pessoa\n"+
+                    "(exit) para encerrar a aplicação\n");
+                option = Console.ReadLine();
+                if (option == "a") { CleanUp(); ExtractFeatures(); }
+                else if (option == "b") { CleanUp(); RunClassifier(); }
+                else if (option == "exit") break;
             } while (true);
         }
 
@@ -71,16 +67,16 @@ namespace FacialRecognition {
             //A peak at the JSON response.
             if (file != "") file += ": ";
             Console.WriteLine(file + responseContent);
-            String filename = imageFilePath + ".txt";
+            String filename = imageFilePath + ".json";
             System.IO.StreamWriter writer = new System.IO.StreamWriter(filename);
             writer.WriteLine(responseContent);
             writer.Close();
 
         }
 
-        private static void MakeDetectRequestFor(String[] images, String queryString)
+        static void MakeDetectRequestFor(String path, String[] images, String queryString)
         {
-            for(int i = 0; i< images.Length; ++i)
+            for (int i = 0; i < images.Length; ++i)
                 MakeDetectRequest(path + images[i], images[i], queryString);
         }
 
@@ -91,7 +87,7 @@ namespace FacialRecognition {
             String queryString = "returnFaceId=false";
             Console.Write("Face Landmarks ");
             answer = Console.ReadLine();
-            if (answer == "y") queryString += "%returnFaceLandmarks=true";
+            if (answer == "y") queryString += "&returnFaceLandmarks=true";
             else queryString += "&returnFaceLandmarks=false";
             Console.Write("Face Attributes ");
             answer = Console.ReadLine();
@@ -142,6 +138,45 @@ namespace FacialRecognition {
                 if (answer == "y") queryString += ",noise";
             }
             return queryString;
+        }
+
+        static void ExtractFeatures()
+        {
+            String option, queryString;
+            do
+            {
+                Console.Write("(a) Extrair características de uma base de dados especifica\n"+
+                    "(b) Extrair características de imagens reais\n"+
+                    "(c) Inserir um caminho à escolha\n"+
+                    "(home) para voltar ao início\n"+
+                    "(exit) para encerrar a aplicação\n");
+                option = Console.ReadLine();
+                if (option == "home") { CleanUp(); return; }
+                else if (option == "exit") System.Environment.Exit(1);
+                queryString = ChooseFeatures(); // Request parameters
+                if (option == "a") MakeDetectRequestFor(path1, bd_images, queryString);
+                else if (option == "b") MakeDetectRequestFor(path2, real_images, queryString);
+                else MakeDetectRequest(option, Path.GetFileName(option), queryString);
+
+                Console.WriteLine("\n\n\nEspere pelos resultados ou vá à diretoria e consulte os ficheiro .txt gerados...\n\n\n");
+                Console.ReadLine();
+            } while (true);
+        }
+
+        static void RunClassifier() {
+            String option;
+            do
+            {
+                Console.Write("(home) para voltar ao início\n" +
+                        "(exit) para encerrar a aplicação\n");
+                option = Console.ReadLine();
+                if (option == "home") { CleanUp();  return; }
+                else if(option == "exit") System.Environment.Exit(1);
+            } while (true);
+        }
+        static void CleanUp()
+        {
+            Console.Clear();
         }
     }
 }

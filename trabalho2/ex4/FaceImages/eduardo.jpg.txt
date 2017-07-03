@@ -1,1 +1,0 @@
-[{"faceRectangle":{"top":444,"left":226,"width":620,"height":620}}]
