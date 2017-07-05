@@ -30,15 +30,10 @@ function distinct_colors = rgb2safeColor(safe, filename, outfilename)
                 blue_pixel_value = B(c,r);
                 
                 new_pixel_value = [safe_color_pixel(red_pixel_value, safe_values) safe_color_pixel(green_pixel_value, safe_values) safe_color_pixel(blue_pixel_value, safe_values)]; 
-
                 R(c,r)=new_pixel_value(1);
                 G(c,r)=new_pixel_value(2);
-                B(c,r)=new_pixel_value(3);
-                
-%                 R(c,r) = safe_color_pixel(red_pixel_value, safe_values); 
-%                 R(c,r) = safe_color_pixel(green_pixel_value, safe_values); 
-%                 R(c,r) = safe_color_pixel(blue_pixel_value, safe_values); 
-                distinct_colors_matrix = [distinct_colors_matrix; [red_pixel_value green_pixel_value blue_pixel_value]];
+                B(c,r)=new_pixel_value(3); 
+                distinct_colors_matrix = [distinct_colors_matrix; 10*new_pixel_value(1)+20*new_pixel_value(2)+30*new_pixel_value(3)];
             end   
         end
     else %   web safest color
@@ -76,7 +71,7 @@ function distinct_colors = rgb2safeColor(safe, filename, outfilename)
                 R(c,r)=new_pixel_value(1);
                 G(c,r)=new_pixel_value(2);
                 B(c,r)=new_pixel_value(3);
-                distinct_colors_matrix = [distinct_colors_matrix; new_pixel_value];
+                distinct_colors_matrix = [distinct_colors_matrix; 10*new_pixel_value(1)+20*new_pixel_value(2)+30*new_pixel_value(3)];
             end   
         end
     end     
@@ -86,8 +81,9 @@ function distinct_colors = rgb2safeColor(safe, filename, outfilename)
     figure();
     subplot(211); imshow(J);  title(' Imagem original '); impixelinfo;
     subplot(212); imshow(I); title(' Imagem transformada '); impixelinfo;
+    % transformar o RGB num valor unico    
     distinct_colors_matrix = unique(distinct_colors_matrix);
-    [distinct_colors,n] = size(distinct_colors_matrix);
+   [distinct_colors,n] = size(distinct_colors_matrix);
     imwrite(uint8(I), outfilename);
 end
 
