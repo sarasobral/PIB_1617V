@@ -78,7 +78,7 @@ public class NumbersToImage {
             g2d.drawString(text, 0, fms.getAscent() + fm.getAscent() * idx++);
             letter++;
         }
-        g2d.setPaint ( new Color(1f,0f,0f,.10f ) );
+        g2d.setPaint ( new Color(0f,0f,1f,.10f ) );
         g2d.fillRect ( 0, 0, width, height );
         g2d.dispose();
         try {
