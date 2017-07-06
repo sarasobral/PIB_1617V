@@ -8,16 +8,16 @@
 %
 % Para testar todas as imagens da pasta FingerprintImages
 
-function funcTestFinger()
+function run_fingerprint_enhancement_morph()
    
     % Fechar todas as janelas de figuras.  
     close all;
     % Limpar a consola.
     clc;
  
-    fingerprint_enhancement_morph('FingerprintImages\finger1.tif')
-    fingerprint_enhancement_morph('FingerprintImages\finger2.tif')
-    fingerprint_enhancement_morph('FingerprintImages\finger3.tif')
-    fingerprint_enhancement_morph('FingerprintImages\finger4.tif')
-    fingerprint_enhancement_morph('FingerprintImages\finger5.bmp')
+    fingerprint_enhancement_morph('FingerprintImages\finger1.tif');
+    fingerprint_enhancement_morph('FingerprintImages\finger2.tif');
+    fingerprint_enhancement_morph('FingerprintImages\finger3.tif');
+    fingerprint_enhancement_morph('FingerprintImages\finger4.tif');
+    fingerprint_enhancement_morph('FingerprintImages\finger5.bmp');
 end
