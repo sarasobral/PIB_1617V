@@ -6,12 +6,9 @@
 %
 % PIB - Processamento de Imagem e Biometria.
 %
-% fingerprint_enhancement_morph.m
-% Transformação T aplicada através de tabela de lookup.
-
-%fingerprint_enhancement.m. Para uma imagem de impressão digital produz uma versão binária da mesma,
-%tentando separar as riscas do fundo. Apresente os resultados experimentais obtidos com as imagens do conjunto
-%FingerprintImages.zip.
+% fingerprint_enhancement.m
+% Para uma imagem de impressão digital produz uma versão binária da 
+% mesma, tentando separar as riscas. 
 
 function IBW = fingerprint_enhancement_morph(filename)
     

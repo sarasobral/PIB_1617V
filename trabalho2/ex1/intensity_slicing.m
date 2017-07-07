@@ -1,3 +1,14 @@
+%
+% ISEL - Instituto Superior de Engenharia de Lisboa.
+%
+% LEIC - Licenciatura em Engenharia Informatica e de Computadores.
+% MEIC - Mestrado em Engenharia Informatica e de Computadores.
+%
+% PIB - Processamento de Imagem e Biometria.
+%
+% intensity_slicing.m.m
+% realiza coloração das imagens através das técnicas de intensity slicing.
+
 function Iout = intensity_slicing (I)
     % obter a imagem monocromatica
     [M,N] = size(I); 

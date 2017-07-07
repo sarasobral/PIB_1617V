@@ -6,8 +6,10 @@
 %
 % PIB - Processamento de Imagem e Biometria.
 %
+% converte uma imagem RGB na sua versão web safe color ou web
+% safest color, mediante um parâmetro de entrada safe
 
-function distinct_colors = rgb2safeColor(safe, filename, outfilename) 
+function distinct_colors = rgb2safeOrSafestColor(safe, filename, outfilename) 
 
     distinct_colors_matrix = []; 
     J = imread(filename);

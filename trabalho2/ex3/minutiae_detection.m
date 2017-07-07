@@ -6,8 +6,8 @@
 %
 % PIB - Processamento de Imagem e Biometria.
 %
-% fingerprint_enhancement_morph.m
-% Transformação T aplicada através de tabela de lookup.
+% minutiae_detection.m
+% Deteta bifurcamentos e extremidades colorindo-os 
 
 function I = minutiae_detection(IBW)
     matrix1 = [0 1 0;

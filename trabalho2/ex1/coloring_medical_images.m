@@ -1,3 +1,14 @@
+%
+% ISEL - Instituto Superior de Engenharia de Lisboa.
+%
+% LEIC - Licenciatura em Engenharia Informatica e de Computadores.
+% MEIC - Mestrado em Engenharia Informatica e de Computadores.
+%
+% PIB - Processamento de Imagem e Biometria.
+%
+% coloring_medical_images.m.m
+% realiza coloração das imagens médicas do conjunto MedicalImages.zip através das técnicas de intensity slicing.
+
 function coloring_medical_images()
     close all;
     clc;
@@ -23,7 +34,6 @@ function coloring(filename, ext)
         I = imread(strcat(filename, ext));
     end
     
-    
     Iout = intensity_slicing (I);    
 	If = medical_image_enhancement(strcat(filename, ext));    
     Ifout = intensity_slicing (If);
@@ -33,6 +43,4 @@ function coloring(filename, ext)
      subplot(222); imshow(Iout); colorbar; title(' Imagem original colorida' );
      subplot(223); imshow(If); colorbar; title(' Imagem transformada' );
      subplot(224); imshow(Ifout); colorbar; title(' Imagem transformada colorida' );
-
-
 end

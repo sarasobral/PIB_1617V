@@ -6,7 +6,8 @@
 %
 % PIB - Processamento de Imagem e Biometria.
 %
-% Para testar todas as imagens da pasta FingerprintImages
+% Para testar a função fingerprint_enhancement_morph-m sobre todas
+% as imagens da pasta FingerprintImages
 
 function run_fingerprint_enhancement_morph()
    
